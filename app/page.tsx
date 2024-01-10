@@ -1,0 +1,8 @@
+import Link from "next/link";
+import HomePage from "./home/page";
+
+export default function Home() {
+  return(
+      <HomePage />
+    )
+}
