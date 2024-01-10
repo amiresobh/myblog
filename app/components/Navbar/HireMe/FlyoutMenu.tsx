@@ -1,5 +1,5 @@
 "use client";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 import { Popover, Transition } from "@headlessui/react";
 import {
@@ -9,16 +9,22 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/20/solid";
 
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
-import IranianSans from "@/app/assets/fonts/IranianSans";
 const callsToAction = [{ name: "ارسال", href: "#", icon: PaperAirplaneIcon }];
 
+interface MessageForm {
+  mesaage: string;
+}
+
+
 export default function FlyoutMenu() {
+  const { register, handleSubmit } = useForm<MessageForm>();
+  const [sent,setSent] = useState(false)
+
   return (
-    
-    <Popover
-      className={`relative hire-me mt-10 mr-20`}
-    >
+    <Popover className={`relative hire-me mt-10 mr-20`}>
       <Popover.Button className="hire-me inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
         <div className="shade" data-drift="-4 -6" data-drift-center="y">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
@@ -49,32 +55,47 @@ export default function FlyoutMenu() {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-96 max-w-max -translate-x-1/2 px-4 sm:w-screen !tracking-normal">
-          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+          <form
+            onSubmit={handleSubmit( async (data) => {
+              const res = await axios.post('/api', {'message': data.mesaage})
+              if(res.status == 201) setSent(true)
+            })}
+            className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5"
+          >
             <div className="p-4">
               <div
                 className={` sm:text-2xl text-lg text-right m-7 font-IranianSans`}
               >
                 از خودتان بگویید و راه تماسی برایم بگذارید
               </div>
-              <textarea rows={10} cols={50} className={` p-3 rounded-lg focus:border-dotted border-2 border-e-blue-200 flex-1 sm:w-96 w-64 h-96 bg-gray-100 text-right font-medium sm:text-2xl text-xl resize-none`} />
-              
+              <textarea
+                {...register("mesaage")}
+                rows={10}
+                cols={50}
+                id="textarea"
+                className={` p-3 rounded-lg focus:border-dotted border-2 border-e-blue-200 flex-1 sm:w-96 w-64 h-96 bg-gray-100 text-right font-medium sm:text-2xl text-xl resize-none`}
+              />
             </div>
             <div className="divide-x divide-gray-900/5 bg-blue-300">
               {callsToAction.map((item) => (
-                <a
+                <button
+                  type="submit"
                   key={item.name}
-                  href={item.href}
-                  className={` flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 sm:text-2xl text-lg hover:bg-blue-400`}
+                  className={` flex items-center justify-center w-full font-IranianSans gap-x-2.5 p-3 font-semibold text-gray-900 sm:text-2xl text-lg hover:bg-blue-400`}
                 >
                   <item.icon
                     className="sm:h-10 sm:w-10 h-6 w-6 text-gray-900 font-IranianSans"
                     aria-hidden="true"
                   />
-                  {item.name}
-                </a>
+                  {sent ?
+                  '!گرفتم'
+                  :
+                  item.name
+                }
+                </button>
               ))}
             </div>
-          </div>
+          </form>
         </Popover.Panel>
       </Transition>
     </Popover>

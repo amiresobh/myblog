@@ -12,8 +12,8 @@ import Menu from "./components/Menu/Menu";
 import LoadingComponent from "./components/LoadingComponent";
 
 export const metadata: Metadata = {
-  title: "Amir M. Sobhani | Freelancer",
-  description: "Amir Mohammad is an independant creative developer from Iran. He loves helping organisations to build ambitious yet accessible web projects. , he also wriSometimestes in the third person.",
+  title: "امیرمحمد سبحانی | فریلنسر",
+  description: "امیرمحمد توسعه دهنده ای مستقل است، علاقمند به آشنایی با افراد و سازمان ها و کمک به آن ها درجهت پیشرفت...",
   // openGraph:{
   //   siteName: 'Amir Mohammad Sobhani Digital',
   //   type: 'website',

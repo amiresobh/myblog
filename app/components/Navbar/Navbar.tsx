@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="mainnav">
       <NoSSRLogo />
       <MenuBTN />
-      {/* <FlyoutMenu /> */}
+      <FlyoutMenu />
     </div>
   );
 };
