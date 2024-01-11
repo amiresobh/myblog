@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE `Message` (
-    `id` VARCHAR(191) NOT NULL,
-    `date` DATETIME(3) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `date` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `message` VARCHAR(191) NOT NULL,
     `isRead` BOOLEAN NOT NULL DEFAULT false,
 
