@@ -3,9 +3,7 @@ import { Fragment, useState } from "react";
 
 import { Popover, Transition } from "@headlessui/react";
 import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
+  CheckCircleIcon,
   PaperAirplaneIcon,
 } from "@heroicons/react/20/solid";
 
@@ -18,16 +16,18 @@ interface MessageForm {
   mesaage: string;
 }
 
+import { SendingStates } from "./SendingStates";
+import Loading from "./Loading";
 
 export default function FlyoutMenu() {
   const { register, handleSubmit } = useForm<MessageForm>();
-  const [sent,setSent] = useState(false)
+  const [sendingState, setSendingState] = useState(SendingStates.Before);
 
   return (
     <Popover className={`relative hire-me mt-10 mr-20`}>
       <Popover.Button className="hire-me inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
         <div className="shade" data-drift="-4 -6" data-drift-center="y">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" id="hire-me-svg">
             <path
               className="filled-path"
               d="M30.78,9.87c13.52,0,24.46,9.58,24.46,21.41a19.4,19.4,0,0,1-5,12.95h0l2.9,9.82L42.37,50.1h0a27.51,27.51,0,0,1-11.59,2.58,26.84,26.84,0,0,1-14-3.86C10.42,45,6.24,38.52,6.24,31.2,6.24,19.53,17.26,9.87,30.78,9.87Z"
@@ -35,7 +35,7 @@ export default function FlyoutMenu() {
           </svg>
         </div>
         <div className="main">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" id="hire-me-svg">
             <path
               className="stroke-path"
               d="M27.78,5.87c13.52,0,24.46,9.58,24.46,21.41a19.4,19.4,0,0,1-5,12.95h0l2.9,9.82L39.37,46.1h0a27.51,27.51,0,0,1-11.59,2.58,26.84,26.84,0,0,1-14-3.86C7.42,41,3.24,34.52,3.24,27.2,3.24,15.53,14.26,5.87,27.78,5.87Z"
@@ -56,9 +56,12 @@ export default function FlyoutMenu() {
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-96 max-w-max -translate-x-1/2 px-4 sm:w-screen !tracking-normal">
           <form
-            onSubmit={handleSubmit( async (data) => {
-              const res = await axios.post('/api', {'message': data.mesaage})
-              if(res.status == 201) setSent(true)
+            onSubmit={handleSubmit(async (data) => {
+              if (sendingState != SendingStates.Is) {
+                setSendingState(SendingStates.Is);
+                const res = await axios.post("/api", { message: data.mesaage });
+                if (res.status == 201) setSendingState(SendingStates.After);
+              }
             })}
             className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5"
           >
@@ -77,23 +80,32 @@ export default function FlyoutMenu() {
               />
             </div>
             <div className="divide-x divide-gray-900/5 bg-blue-300">
-              {callsToAction.map((item) => (
-                <button
-                  type="submit"
-                  key={item.name}
-                  className={` flex items-center justify-center w-full font-IranianSans gap-x-2.5 p-3 font-semibold text-gray-900 sm:text-2xl text-lg hover:bg-blue-400`}
-                >
-                  <item.icon
-                    className="sm:h-10 sm:w-10 h-6 w-6 text-gray-900 font-IranianSans"
-                    aria-hidden="true"
-                  />
-                  {sent ?
-                  '!گرفتم'
-                  :
-                  item.name
+              <button
+                type="submit"
+                className={`flex items-center h-15 sm:h-20 justify-center w-full font-IranianSans gap-x-2.5 p-3 font-semibold text-gray-900 sm:text-2xl text-lg hover:bg-blue-400`}
+              >
+                {sendingState == SendingStates.Before && 
+                  <>
+                    <p className="font-IranianSans"> ارسال </p>
+                    <PaperAirplaneIcon
+                      className="sm:h-10 sm:w-10 h-6 w-6 text-gray-900 font-IranianSans"
+                      aria-hidden="true"
+                    />
+                  </>
                 }
-                </button>
-              ))}
+                {sendingState == SendingStates.After && 
+                  <>
+                    <p className="font-IranianSans"> گرفتم </p>
+                    <CheckCircleIcon
+                      className="sm:h-10 sm:w-10 h-6 w-6 text-gray-900 font-IranianSans"
+                      aria-hidden="true"
+                    />
+                  </>
+                }
+                {sendingState == SendingStates.Is && 
+                  <Loading />
+                }
+              </button>
             </div>
           </form>
         </Popover.Panel>

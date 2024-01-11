@@ -11,9 +11,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Menu from "./components/Menu/Menu";
 import LoadingComponent from "./components/LoadingComponent";
 
+import { PaperAirplaneIcon } from "@heroicons/react/20/solid";
+import Loading from "./components/Navbar/HireMe/Loading";
+
 export const metadata: Metadata = {
   title: "امیرمحمد سبحانی | فریلنسر",
-  description: "امیرمحمد توسعه دهنده ای مستقل است، علاقمند به آشنایی با افراد و سازمان ها و کمک به آن ها درجهت پیشرفت...",
+  description:
+    "امیرمحمد توسعه دهنده ای مستقل است، علاقمند به آشنایی با افراد و سازمان ها و کمک به آن ها درجهت پیشرفت...",
   // openGraph:{
   //   siteName: 'Amir Mohammad Sobhani Digital',
   //   type: 'website',
@@ -24,8 +28,8 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = {
   themeColor: "#aadcec",
-  colorScheme: 'only light',
-}
+  colorScheme: "only light",
+};
 
 export default function RootLayout({
   children,
@@ -34,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={'font-IranianSans'}>
+      <body className={"font-IranianSans"}>
         <LoadingComponent />
         <div className="pagewrap">
           <Navbar />
@@ -45,6 +49,7 @@ export default function RootLayout({
             tabIndex={-1}
           >
             {children}
+           
           </main>
           <small className="made-in-wales">Amir Mohammad Sobhani Digital</small>
         </div>
