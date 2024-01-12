@@ -8,7 +8,6 @@ const Loading = () => {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       className="m-auto block"
-      //   style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;"
       width="30px"
       height="30px"
       viewBox="0 0 100 100"

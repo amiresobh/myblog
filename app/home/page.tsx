@@ -5,12 +5,6 @@ export default function HomePage() {
     <>
       <svg
         className="absolute top-[-900px] left-[-900px] "
-        // style="
-        //     position: absolute;
-        //     top: -900px;
-        //     left: -900px;
-        //     clip: rect(0, 0, 0, 0);
-        //   "
       >
         <filter id="duotone_filter">
           <feColorMatrix
@@ -44,7 +38,6 @@ export default function HomePage() {
       <div className="section">
         <div
           className="relative"
-          // style="position: relative"
           data-prlx="0 -0.125"
         >
           <div className="avatar-bg">
