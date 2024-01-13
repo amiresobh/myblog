@@ -24,3 +24,12 @@
   font-family: "IranianSans";
   src: url("./assets/fonts/IranianSans.ttf");
 }
+
+@layer base{
+  h1, h2, h3, p{
+    @apply !font-IranianSans 
+  }
+  p{
+    @apply text-right
+  }
+}

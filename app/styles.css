@@ -3652,6 +3652,13 @@ html:not(.is-loading).js .is-onscreen .reveal-content {
   height: 88%;
   transition: all 1.5s ease-out;
   background-repeat: no-repeat;
+  /* animation: circle__bgAnimation 2s infinite alternate !important; */
+}
+@keyframes circle__bgAnimation {
+  0%{transform: translate(-100px,100px)}
+  50%{transform: translate(50px,0px);}
+  100%{transform: translate(0px,0px); }
+  
 }
 .circle__bg,
 .circle__bg:after {
