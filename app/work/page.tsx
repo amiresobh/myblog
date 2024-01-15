@@ -1,7 +1,5 @@
 import React from "react";
 import type { Metadata } from "next";
-import LoadingComponent from "../components/LoadingComponent";
-import toggleConnectPopover from "../functions/toggleConnectPopover";
 import SubmitBtn from "./SubmitBtn";
 
 export const metadata: Metadata = {

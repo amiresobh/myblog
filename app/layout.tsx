@@ -1,7 +1,5 @@
-//Note:
-//Modifi header tags
-
 import type { Metadata, Viewport } from "next";
+import { useState } from "react";
 
 import "./globals.css";
 import "./styles.css";
@@ -13,6 +11,7 @@ import LoadingComponent from "./components/LoadingComponent";
 
 import { PaperAirplaneIcon } from "@heroicons/react/20/solid";
 import Loading from "./components/Navbar/HireMe/Loading";
+import Providers from "./Providers/Providers";
 
 export const metadata: Metadata = {
   title: "امیرمحمد سبحانی | فریلنسر",
@@ -39,20 +38,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="!font-IranianSans text-right">
       <body className={"font-IranianSans"}>
-        <LoadingComponent />
-        <div className="pagewrap">
-          <Navbar />
-          <Menu />
-          <main
-            id="main-content"
-            className="page-body page-body--header"
-            tabIndex={-1}
-          >
-            {children}
-           
-          </main>
-          <small className="made-in-wales">Amir Mohammad Sobhani Digital</small>
-        </div>
+        <Providers>
+          <LoadingComponent />
+          <div className="pagewrap">
+            <Navbar />
+            <Menu />
+            <main
+              id="main-content"
+              className="page-body page-body--header"
+              tabIndex={-1}
+            >
+              {children}
+            </main>
+            <small className="made-in-wales">
+              Amir Mohammad Sobhani Digital
+            </small>
+          </div>
+        </Providers>
       </body>
     </html>
   );

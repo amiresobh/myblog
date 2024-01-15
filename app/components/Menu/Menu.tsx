@@ -27,7 +27,6 @@ const Menu = () => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Follow me on Instagram
                 </a>
               </li>
               <li className="social-links__item">
@@ -39,7 +38,6 @@ const Menu = () => {
                   target="_blank"
                   data-rekishi-skip
                 >
-                  Subscribe to my RSS feed
                 </a>
               </li>
               <li className="social-links__item">
@@ -50,7 +48,6 @@ const Menu = () => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Send me an Email
                 </a>
               </li>
             </ul>

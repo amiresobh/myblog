@@ -1,17 +1,24 @@
 "use client";
-import React from "react";
-import { toggleConnectPopoverState } from "../functions/toggleConnectPopover";
+import React, { useContext, useState } from "react";
+
+import { ConnectPopoverContext } from "../Providers/ConnectPopoverContext";
 
 const SubmitBtn = () => {
+  const {isConnectPopoverOpen, setIsConnectPopoverOpen} = useContext(ConnectPopoverContext)
   return (
-    <button onClick={toggleConnectPopoverState} className="btn">
-      <span className="btn__label font-IranianSans">پیام بزارین</span>
+    <button
+      className="btn"
+      onClick={() =>
+        setIsConnectPopoverOpen(true)
+      }
+    >
+      <span className="btn__label font-IranianSans">ارتباط با من</span>
       <span
         className="btn__fill stripes !font-IranianSans"
         data-drift="-10 -12"
         aria-hidden="true"
       >
-        پیام بزارین
+        ارتباط با من
       </span>
     </button>
   );
