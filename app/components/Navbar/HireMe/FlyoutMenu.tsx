@@ -18,20 +18,17 @@ import { ConnectPopoverContext } from "@/app/Providers/ConnectPopoverContext";
 export default function FlyoutMenu() {
   const { register, handleSubmit } = useForm<MessageForm>();
   const [sendingState, setSendingState] = useState(SendingStates.Before);
-  const { isConnectPopoverOpen, setIsConnectPopoverOpen } = useContext(
-    ConnectPopoverContext
-  );
+  //get is ConnectPopoveropen and setIsConnectPopover open from ConnectPopoverContext Provider
+  const { isConnectPopoverOpen, setIsConnectPopoverOpen } =
+  useContext(ConnectPopoverContext);
 
+  
   return (
     <Popover className={`relative hire-me mt-10 mr-20`}>
       {({ open }) => {
-        useEffect(() => {
-          setIsConnectPopoverOpen(open);
-        }, [open]);
-
         return (
           <>
-            <Popover.Button
+            <button
               onClick={() => setIsConnectPopoverOpen(!isConnectPopoverOpen)}
               className="hire-me inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
             >
@@ -60,11 +57,11 @@ export default function FlyoutMenu() {
                 </svg>
               </div>
               Connect
-            </Popover.Button>
+            </button>
             {isConnectPopoverOpen && (
               <div>
                 <Popover.Overlay
-                  className="fixed inset-0 "
+                  className="fixed inset-0"
                   static
                   onClick={() => setIsConnectPopoverOpen(!isConnectPopoverOpen)}
                 />

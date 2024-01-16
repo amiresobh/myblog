@@ -1,7 +1,9 @@
 import { createContext } from "react";
 
-export const ConnectPopoverContext = createContext({})
+interface IConnectPopoverContext {
+    isConnectPopoverOpen: boolean
+    setIsConnectPopoverOpen: (value: boolean) => void
+}
 
-
-
+export const ConnectPopoverContext = createContext<IConnectPopoverContext>({isConnectPopoverOpen: false, setIsConnectPopoverOpen: ()=> false})
 
