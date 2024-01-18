@@ -16,10 +16,10 @@ const Menu = () => {
   return (
     <div>
       <div className="main-menu js-menu h-0" id="main-menu">
-        <div className="main-menu__mask"></div>
-        <div className="main-menu__flyout pt-[100px] pl-[35px] pb-[50px]  sm:pt-[150px] sm:pr-[55px] sm:pb-[80px] sm:pl-[65px]">
+        <div className="main-menu__mask z-[5]"></div>
+        <div className="main-menu__flyout fixed z-[6] right-20 top-[20%]">
           <div className="main-menu__inr wrap h-full flex flex-col whitespace-nowrap align-middle ">
-            <ul className="social-links relative mt-0 ml-0 mb-[30px] pl-[100px]">
+            <ul className="social-links">
               <li className="social-links__item">
                 <a
                   className="social-links__link social-links__link--in"

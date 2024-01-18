@@ -24,13 +24,13 @@ export default function FlyoutMenu() {
 
   
   return (
-    <Popover className={`relative hire-me mt-10 mr-20`}>
+    <Popover className={`relative hire-me mt-10 mr-20 `}>
       {({ open }) => {
         return (
           <>
             <button
               onClick={() => setIsConnectPopoverOpen(!isConnectPopoverOpen)}
-              className="hire-me inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+              className="hire-me inline-flex items-center gap-x-1 text-sm font-light leading-6 text-gray-900"
             >
               <div className="shade" data-drift="-4 -6" data-drift-center="y">
                 <svg

@@ -7,10 +7,10 @@ import FlyoutMenu from "./HireMe/FlyoutMenu";
 const NoSSRLogo = dynamic(() => import("./Logo"), { ssr: false });
 const Navbar = () => {
   return (
-    <div className="mainnav">
+    <div className="mainnav !left-0 sm:mx-20">
       <NoSSRLogo />
       <MenuBTN />
-      <FlyoutMenu/>
+      <FlyoutMenu />
     </div>
   );
 };

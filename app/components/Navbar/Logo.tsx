@@ -4,7 +4,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="logo-wrap">
+    <div className='logo-wrap '>
       <span className="u-vhide">Back to the homepage</span>
       <div className="logo js-logo">
         <div className="logo__skirrid">

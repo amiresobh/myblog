@@ -63,19 +63,8 @@ export default function Work() {
                 افزار موبایل و ویندوز ساخته ام، و به موسسه ها، مشاوره فناورانه
                 داده ام
                 <br></br>
+                درعین حال پزشک نیز هستم، اگر پروژه ی شما میان رشته ای هست جای شما در قلب منه
               </p>
-              {/* <p className="page-header__lede t-primary lh-loose t-body:s t-sublede:m t-lede:l reveal-content text-right !font-IranianSans pr-16">
-                 اگه میخاین که سایت داشته باشین برای خودتون یا کسب و کارتون     
-                <br></br>
-                اگه سایت دارین ولی داغونه و نمیدونین چیکارش کنین 
-                <br></br>
-                اگه نرم افزار موبایل میخواین 
-                <br></br>
-                اگه نمیدونین از فناوری کجای کسب و کارتون استفاده کنین 
-              </p> */}
-              {/* <p className="page-header__lede t-primary lh-loose t-body:s t-sublede:m t-lede:l reveal-content text-center !font-IranianSans mt-10 bg-[#0f1b61] !text-[#f4f9fc] w-[25vw] p-3">
-                <b> شماره تونو برام بفرستین </b>
-              </p> */}
               <span className="page-header__scroll" aria-hidden="true">
                 <span>
                   <span>S</span> <span>c</span> <span>r</span>
