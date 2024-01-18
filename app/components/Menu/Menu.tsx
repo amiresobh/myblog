@@ -10,7 +10,7 @@ const Menu = () => {
     { title: "خانه", descprtion: "بازگشت به صفحه خانه", url: "home" },
     { title: "کار", descprtion: " مروری بر شیوه کار", url: "work" },
     { title: "درباره من", descprtion: "کمی درباره من", url: "about" },
-    { title: "نوشته ها", descprtion: "آخرین نوشته های من درمورد تکنولوژی و پزشکی", url: "writting" },
+    // { title: "نوشته ها", descprtion: "آخرین نوشته های من درمورد تکنولوژی و پزشکی", url: "writting" },
   ];
 
   return (
