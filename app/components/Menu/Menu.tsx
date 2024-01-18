@@ -31,9 +31,8 @@ const Menu = () => {
               </li>
               <li className="social-links__item">
                 <a
-                  className="social-links__link social-links__link--rss"
-                  // href="feed.xml"
-                  href=""
+                  className="social-links__link social-links__link--gh"
+                  href="https://github.com/"
                   rel="noopener noreferrer"
                   target="_blank"
                   data-rekishi-skip
